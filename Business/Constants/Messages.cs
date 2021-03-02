@@ -24,5 +24,23 @@ namespace Business.Constants
         public static string BrandUpdated = "Brand updated.";
         public static string BrandNameInvalid = "Brand name is invalid.";
         public static string BrandsListed = "Brands have been listed.";
+
+        public static string RentalAdded = "Rental added.";
+        public static string RentalNotAdded = "Rental could not added.";
+        public static string RentalDeleted = "Rental deleted.";
+        public static string RentalUpdated = "Rental updated.";
+        public static string RentalsListed = "Rentals have been listed.";
+
+        public static string CustomerAdded = "Customer added.";
+        public static string CustomerDeleted = "Customer deleted.";
+        public static string CustomerUpdated = "Customer updated.";
+        public static string CustomerNameInvalid = "Customer name is invalid.";
+        public static string CustomersListed = "Customers have been listed.";
+
+        public static string UserAdded = "User added.";
+        public static string UserDeleted = "User deleted.";
+        public static string UserUpdated = "User updated.";
+        public static string UserNameInvalid = "User name is invalid.";
+        public static string UsersListed = "Users have been listed.";
     }
 }

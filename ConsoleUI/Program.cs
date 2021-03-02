@@ -10,10 +10,36 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarTest();
+           // CarTest();
             //BrandTest();
 
-           //ColorTest();
+            //ColorTest();
+
+            RentACarTest();
+        }
+
+        private static void RentACarTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            var resultUser = userManager.Add(new User() { Id = 8, FirstName = "Mary", LastName = "Bowny", Email = "mary_bowny", Password = "1234567" });
+            if (resultUser.Success == true)
+            {
+                Console.WriteLine(resultUser.Message);
+            }
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var resultCustomer = customerManager.Add(new Customer() { Id=8 ,UserId = 4, CompanyName = "Unknown Company2" });
+            if (resultCustomer.Success == true)
+            {
+                Console.WriteLine(resultCustomer.Message);
+            }
+
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var resultRentCar = rentalManager.Add(new Rental() { Id =5, CarId = 2, CustomerId = 1, RentDate = new DateTime(2000,10,04), ReturnDate = new DateTime(2021,02,27) });
+
+            if (resultRentCar.Success == true)
+            {
+                Console.WriteLine(resultRentCar.Message);
+            }
 
         }
 
@@ -104,7 +130,7 @@ namespace ConsoleUI
             Car car1 = new Car() { Id = 8, BrandId = 3, ColorId = 1, DailyPrice = 20000, Description = "VosVos", ModelYear = 2015 };
             carManager.Update(car1);
 
-           
+
             var resultCar = carManager.GetAll();
             if(resultCar.Success==true)
             {
@@ -118,9 +144,9 @@ namespace ConsoleUI
             {
                 Console.WriteLine(resultCar.Message);
             }
-            
 
-            
+
+
             var resultCarBrandId = carManager.GetCarsByBrandId(2);
             if (resultCarBrandId.Success == true)
             {
@@ -130,9 +156,9 @@ namespace ConsoleUI
                     Console.WriteLine("Car Id : {0}, Car Name: {1}, Brand Number: {2} , Car Color Number: {3} , Car Model Year: {4}, Car Daily Price: {5}", car.Id, car.Description, car.BrandId, car.ColorId, car.ModelYear, car.DailyPrice);
                 }
             }
-             
 
-           
+
+
             var resultCarColorId = carManager.GetCarsByColorId(1);
             if (resultCarColorId.Success == true)
             {
@@ -142,10 +168,10 @@ namespace ConsoleUI
                     Console.WriteLine("Car Id : {0}, Car Name: {1}, Brand Number: {2} , Car Color Number: {3} , Car Model Year: {4}, Car Daily Price: {5}", car.Id, car.Description, car.BrandId, car.ColorId, car.ModelYear, car.DailyPrice);
                 }
             }
-              
+
 
             var resultNewCar = carManager.CarControlToAdd(new Car { Id = 5, BrandId = 2, ColorId = 1, DailyPrice = 75000, Description = "My future car", ModelYear = 2035 });
-            if(resultNewCar.Success==true)
+            if (resultNewCar.Success == true)
             {
                 Console.WriteLine(resultNewCar.Message);
             }
@@ -153,14 +179,14 @@ namespace ConsoleUI
             {
                 Console.WriteLine(resultNewCar.Message);
             }
-           
-            
+
+
             var deleted = carManager.Delete(car1);
             Console.WriteLine("\n", deleted.Message);
 
-            
+
             var resultCarDetails = carManager.GetCarDetails();
-            if(resultCarDetails.Success==true)
+            if (resultCarDetails.Success == true)
             {
                 Console.WriteLine("\n", resultCarDetails.Message);
                 foreach (var car in resultCarDetails.Data)
@@ -168,9 +194,9 @@ namespace ConsoleUI
                     Console.WriteLine(car.CarName + " -- " + car.BrandName + " -- " + car.ColorName + " -- " + car.DailyPrice);
                 }
             }
-            
-            
-           
+
+
+
         }
     }
 }
