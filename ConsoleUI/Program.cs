@@ -21,20 +21,20 @@ namespace ConsoleUI
         private static void RentACarTest()
         {
             UserManager userManager = new UserManager(new EfUserDal());
-            var resultUser = userManager.Add(new User() { Id = 8, FirstName = "Mary", LastName = "Bowny", Email = "mary_bowny", Password = "1234567" });
+            var resultUser = userManager.Add(new User() { Id = 11, FirstName = "Mary", LastName = "Bowny", Email = "mary_bowny", Password = "1234567" });
             if (resultUser.Success == true)
             {
                 Console.WriteLine(resultUser.Message);
             }
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            var resultCustomer = customerManager.Add(new Customer() { Id=8 ,UserId = 4, CompanyName = "Unknown Company2" });
+            var resultCustomer = customerManager.Add(new Customer() { Id=11 ,UserId = 8, CompanyName = "Unknown Company2" });
             if (resultCustomer.Success == true)
             {
                 Console.WriteLine(resultCustomer.Message);
             }
 
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            var resultRentCar = rentalManager.Add(new Rental() { Id =5, CarId = 2, CustomerId = 1, RentDate = new DateTime(2000,10,04), ReturnDate = new DateTime(2021,02,27) });
+            var resultRentCar = rentalManager.Add(new Rental() { Id =8, CarId = 2, CustomerId = 1, RentDate = new DateTime(2020,10,01), ReturnDate = new DateTime(2020,11,27) });
 
             if (resultRentCar.Success == true)
             {
@@ -76,7 +76,7 @@ namespace ConsoleUI
             }
 
             Console.WriteLine("\n---GET COLOR BY ID---");
-            Console.WriteLine(colorManager.GetById(5).Data.Name);
+            Console.WriteLine(colorManager.GetColorById(5).Data.Name);
 
           
             var resultDelete = colorManager.Delete(color1);
@@ -117,7 +117,7 @@ namespace ConsoleUI
             brandManager.Update(brand1);
 
             Console.WriteLine("\n---GET BRAND BY ID---");
-            Console.WriteLine(brandManager.GetById(5).Data.Name);
+            Console.WriteLine(brandManager.GetBrandById(5).Data.Name);
 
             Console.WriteLine("\n---DELETED BRAND---");
             brandManager.Delete(brand1);
@@ -170,7 +170,7 @@ namespace ConsoleUI
             }
 
 
-            var resultNewCar = carManager.CarControlToAdd(new Car { Id = 5, BrandId = 2, ColorId = 1, DailyPrice = 75000, Description = "My future car", ModelYear = 2035 });
+            var resultNewCar = carManager.Add(new Car { Id = 5, BrandId = 2, ColorId = 1, DailyPrice = 75000, Description = "My future car", ModelYear = 2035 });
             if (resultNewCar.Success == true)
             {
                 Console.WriteLine(resultNewCar.Message);

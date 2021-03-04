@@ -19,14 +19,12 @@ namespace Business.Concrete
         }
 
         public IResult Add(Color entity)
-        {
-            _colorDal.Add(entity);
-
+        { 
             if (entity.Name.Length < 2)
             {
                 return new ErrorResult(Messages.ColorNameInvalid);
             }
-
+            _colorDal.Add(entity);
             return new SuccessResult(Messages.ColorAdded);
         }
 
@@ -38,7 +36,7 @@ namespace Business.Concrete
 
         }
 
-        public IDataResult<Color> GetById(int id)
+        public IDataResult<Color> GetColorById(int id)
         {
             return new SuccessDataResult<Color>( _colorDal.Get(c => c.Id == id));
         }
