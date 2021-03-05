@@ -6,6 +6,4 @@ What I learned while writing the project:
 - Entity Framework                              
 - SOLİD principles                           
 - N-Tier Architecture
-- C# Generics
-- C# LINQ
 - ASP.NET Core
