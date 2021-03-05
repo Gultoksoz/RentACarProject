@@ -8,4 +8,4 @@ What I learned while writing the project:
 - N-Tier Architecture
 - C# Generics
 - C# LINQ
-- CRUD operations
+- ASP.NET Core
