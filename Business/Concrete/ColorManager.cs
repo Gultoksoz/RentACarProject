@@ -50,6 +50,7 @@ namespace Business.Concrete
             return  new SuccessDataResult<List<Color>>( _colorDal.GetAll(), Messages.ColorsListed);
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color entity)
         {
             _colorDal.Update(entity);

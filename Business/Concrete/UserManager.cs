@@ -43,6 +43,8 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(_userDal.Get(c => c.Id == id));
         }
 
+
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Update(User entity)
         {
             _userDal.Update(entity);

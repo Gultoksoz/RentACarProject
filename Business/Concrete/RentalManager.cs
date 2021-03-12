@@ -75,6 +75,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(c => c.CustomerId == id), Messages.RentalsListed);
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental entity)
         {
             _rentalDal.Update(entity);

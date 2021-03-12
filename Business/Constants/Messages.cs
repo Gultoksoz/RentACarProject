@@ -24,6 +24,7 @@ namespace Business.Constants
         public static string BrandUpdated = "Brand updated.";
         public static string BrandNameInvalid = "Brand name is invalid.";
         public static string BrandsListed = "Brands have been listed.";
+        public static string BrandNameAlreadyExists= "Name is already used.Choose different name!";
 
         public static string RentalAdded = "Rental added.";
         public static string RentalNotAdded = "Rental could not added.";
@@ -42,5 +43,7 @@ namespace Business.Constants
         public static string UserUpdated = "User updated.";
         public static string UserNameInvalid = "User name is invalid.";
         public static string UsersListed = "Users have been listed.";
+        public static string CarCountOfBrandError="The brand can have a max of 15 cars.";
+        public static string CarImageLimit="Car image limit is exceeded.";
     }
 }
