@@ -2,9 +2,10 @@
 This project is simple renting a car example.
 
 What I learned while writing the project:                    
-- MSSQL Server                                      
+- MSSQL                                      
 - Entity Framework
-- ASP.NET Core                              
+- ASP.NET WebAPI
+- JWT                            
 - SOLİD principles                           
 - N-Tier Architecture
 
