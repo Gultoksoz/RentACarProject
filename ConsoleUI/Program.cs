@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -15,13 +16,13 @@ namespace ConsoleUI
 
             //ColorTest();
 
-            RentACarTest();
+           // RentACarTest();
         }
 
         private static void RentACarTest()
         {
             UserManager userManager = new UserManager(new EfUserDal());
-            var resultUser = userManager.Add(new User() { Id = 11, FirstName = "Mary", LastName = "Bowny", Email = "mary_bowny", Password = "1234567" });
+            var resultUser = userManager.Add(new User() { Id = 11, FirstName = "Mary", LastName = "Bowny", Email = "mary_bowny" });
             if (resultUser.Success == true)
             {
                 Console.WriteLine(resultUser.Message);
