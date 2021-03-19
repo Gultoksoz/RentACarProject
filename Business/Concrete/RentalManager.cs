@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -21,6 +23,8 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
+        [CacheRemoveAspect("IRentalService.Get")]
+        [SecuredOperation("rental.add,admin")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental entity)
         {
@@ -44,17 +48,21 @@ namespace Business.Concrete
              
         }
 
+        [CacheRemoveAspect("IRentalService.Get")]
+        [SecuredOperation("rental.delete,admin")]
         public IResult Delete(Rental entity)
         {
             _rentalDal.Delete(entity);
             return new SuccessResult(Messages.RentalDeleted);
         }
 
+        [CacheAspect]
         public IDataResult<List<Rental>> GetAll()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalsListed);
         }
 
+        [CacheAspect]
         public IDataResult<Rental> GetRentalById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(c => c.Id == id));
@@ -65,16 +73,20 @@ namespace Business.Concrete
             return new SuccessDataResult<RentalDetailDto>(_rentalDal.GetRentalDetailByCarId(id));
         }
 
+        [CacheAspect]
         public IDataResult<List<Rental>> GetRentalsByCarId(int id)
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(c => c.CarId == id), Messages.RentalsListed);
         }
 
+        
         public IDataResult<List<Rental>> GetRentalsByCustomerId(int id)
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(c => c.CustomerId == id), Messages.RentalsListed);
         }
 
+        [CacheRemoveAspect("IRentalService.Get")]
+        [SecuredOperation("rental.update,admin")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental entity)
         {

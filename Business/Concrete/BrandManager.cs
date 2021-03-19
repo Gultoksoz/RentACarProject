@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -22,6 +24,8 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
+        [CacheRemoveAspect("IBrandService.Get")]
+        [SecuredOperation("brand.add,admin")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand entity)
         {
@@ -35,12 +39,15 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandAdded);
         }
 
+        [CacheRemoveAspect("IBrandService.Get")]
+        [SecuredOperation("brand.delete,admin")]
         public IResult Delete(Brand entity)
         {
             _brandDal.Delete(entity);
             return new SuccessResult(Messages.BrandDeleted);
         }
 
+        [CacheAspect]
         public IDataResult<List<Brand>> GetAll()
         {
             if (DateTime.Now.Hour == 22)
@@ -51,11 +58,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
         }
 
+        [CacheAspect]
         public IDataResult<Brand> GetBrandById(int id)
         {
             return new SuccessDataResult<Brand>( _brandDal.Get(c=>c.Id==id));
         }
 
+
+        [CacheRemoveAspect("IBrandService.Get")]
+        [SecuredOperation("brand.update,admin")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand entity)
         {
