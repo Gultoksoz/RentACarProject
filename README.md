@@ -6,8 +6,4 @@ This project was generated with:
 - Entity Framework
 - ASP.NET WebAPI
 - JWT                            
-
-The tools I used for my project:
-- Postman
-- Git
 - Autofac
