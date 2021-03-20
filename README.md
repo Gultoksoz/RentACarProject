@@ -1,7 +1,7 @@
 ## RentACar
 This app is simple renting a car example.
 
-What I used while writing the project:                    
+This project was generated with:                    
 - .Net Core                                      
 - Entity Framework
 - ASP.NET WebAPI
