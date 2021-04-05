@@ -186,7 +186,7 @@ namespace ConsoleUI
             Console.WriteLine("\n", deleted.Message);
 
 
-            var resultCarDetails = carManager.GetCarDetails();
+            var resultCarDetails = carManager.GetCarsDetails();
             if (resultCarDetails.Success == true)
             {
                 Console.WriteLine("\n", resultCarDetails.Message);
