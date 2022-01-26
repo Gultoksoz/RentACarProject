@@ -6,5 +6,5 @@ This project was generated with:
 - Entity Framework
 - ASP.NET Core WebAPI
 - JWT                            
-- Autofac
+- Autofac 
 
